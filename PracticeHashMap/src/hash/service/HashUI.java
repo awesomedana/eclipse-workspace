@@ -1,4 +1,4 @@
-package hash.service;
+﻿package hash.service;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class HashUI {
 				this.delete();
 				break;
 			default:
-				System.out.println("잘보고 골라라");
+				System.out.println("잘보고 골라라!!!!!!!!!");
 				break;
 			}
 		}
