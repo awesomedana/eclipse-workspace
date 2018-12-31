@@ -1,0 +1,19 @@
+package hash.service;
+
+public class HashUI {
+	public HashUI() {
+		while (true) {
+			printMainMenu();
+		}
+	}
+	
+	public void printMainMenu() {
+		System.out.println("===== 해쉬맵 연습 =====");
+		System.out.print("1. 입력");
+		System.out.print("2. 출력");
+		System.out.print("3. 검색");
+		System.out.print("4. 삭제");
+		System.out.println("===================");
+		System.out.print("선택 => ");
+	}
+}

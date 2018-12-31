@@ -1,0 +1,112 @@
+package basic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import dao.PlayerDao;
+
+public class TestMain {
+	private static PlayerDao dao = new PlayerDao();;
+
+	public static void main(String[] args) {
+		/*// 선수 등록하기
+		HashMap<String, String> mapI = new HashMap<String, String>();
+		mapI.put("p_no", "4");
+		mapI.put("p_name", "구하연");
+		mapI.put("p_rDate", "2018-12-12");
+		mapI.put("t_code", "1");
+
+		boolean resultI = dao.insertP(mapI);
+		if (resultI) {
+			System.out.println("\n등록 성공");
+			System.out.println(mapI);
+		} else {
+			System.out.println("\n등록 실패");
+		}
+		
+		// 선수 수정하기
+		HashMap<String, Object> mapU = new HashMap<String, Object>();
+		int p_no = 4;
+		String p_name = "구하연";
+		mapU.put("p_no", p_no+"");
+		mapU.put("p_name", p_name);
+		mapU.put("p_rDate", "2018-12-13");
+		mapU.put("t_code", "4");
+		
+		boolean resultU = dao.update(mapU);
+		if (resultU) {
+			System.out.println("\n수정 성공");
+		} else {
+			System.out.println("\n수정 실패");
+		}
+		
+		
+		// 선수의 대표선수 발탁된 날짜 1달 전으로 수정하기
+		HashMap<String, Object> mapUD = new HashMap<String, Object>();
+		p_no = 4;
+		mapUD = dao.aMonthBefore(p_no);
+		boolean resultUD = dao.updateP(mapUD);
+		if (resultUD) {
+			System.out.println("\n1달 전으로 수정 성공");
+			System.out.println(mapUD.get("P_RDATE"));
+		} else {
+			System.out.println("\n1달 전으로 수정 실패");
+		}
+
+		// 선수 삭제하기
+		p_no = 4;
+		boolean resultD = dao.deleteP(p_no);
+		if (resultD) {
+			System.out.println("\n삭제 성공");
+		} else {
+			System.out.println("\n삭제 실패");
+		}
+
+		// 선수 검색하기
+		p_no = 1;
+		HashMap<String, Object> mapF = new HashMap<String, Object>();
+		mapF = dao.findByNo(p_no);
+		if (mapF != null) {
+			System.out.println("\n선수 검색 성공");
+			System.out.println(mapF.get("P_NO"));
+			System.out.println(mapF.get("P_NAME"));
+			System.out.println(mapF.get("P_RDATE"));
+			System.out.println(mapF.get("T_CODE"));
+		} else {
+			System.out.println("\n선수 검색 실패!");
+		}*/
+		
+		
+		// 선수의 대표선수 발탁된 날짜에다가 6개월 더해서 날짜 확인하기
+		int p_no = 4;
+		HashMap<String, Object> mapAfter = new HashMap<String, Object>();
+		mapAfter = dao.sixMonthAfter(p_no);
+		if (mapAfter !=null) {
+			System.out.println("\n선수 발탁 6개월 후 날짜 : " + mapAfter.get("P_RDATE"));
+		} else {
+			System.out.println("6개월 후 출력 실패!");
+		}
+
+		//전체 검색
+		/*List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		list = dao.findAllList();
+		if (list != null) {
+			System.out.println("\n전체 검색 성공");
+			for (int i = 0; i < list.size(); i++) {
+				HashMap<String, Object> map = list.get(i);
+				Set<String> set = map.keySet();
+				Iterator<String> it = set.iterator();
+				while (it.hasNext()) {
+					String key = it.next();
+					System.out.print(key + " : " + map.get(key) + " / ");
+				}
+				System.out.println();
+			}
+		} else {
+			System.out.println("\n전체 검색 실패");
+		}*/
+	}
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="hash.dao.FoodMapper">
+  
+  <insert id="insert" parameterType="map">
+  insert into food(fcode, fname) values(#{fcode}, #{fname})
+  </insert>
+  
+  
+  <update id="update" parameterType="map">
+  update food
+  set
+  fcode=#{fcode}, fname=#{fname}
+  where fcode=#{fcode}
+  </update>
+   
+   
+  <delete id="delete" parameterType="map">
+  delete
+  from food
+  where fcode=#{fcode}
+  </delete>
+  
+  
+  <select id="select" resultType="map" parameterType="String">
+  select fname
+  from food
+  where fcode=#{fcode}
+  </select>
+  
+  </mapper>

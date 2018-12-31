@@ -1,0 +1,44 @@
+package hash.dao;
+
+import java.util.HashMap;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import hash.main.MybatisConfig;
+
+
+public class FoodDao {
+	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
+	
+	public int insert(HashMap<String, String> map) {
+		int resultI = 0;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			FoodMapper mapper = session.getMapper(FoodMapper.class);
+			resultI = mapper.insert(map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} if (session != null) {
+			session.close();
+		}
+		return resultI;
+	}
+
+	public HashMap<String, String> search(String fcode) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			FoodMapper mapper = session.getMapper(FoodMapper.class);
+			map = mapper.search(fcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return map;
+	}
+}

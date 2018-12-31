@@ -1,0 +1,5 @@
+package hash.dao;
+
+public interface FoodMapper {
+
+}

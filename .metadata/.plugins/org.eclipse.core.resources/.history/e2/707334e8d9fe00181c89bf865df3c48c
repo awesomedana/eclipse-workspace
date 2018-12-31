@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 인터페이스 네임스페이스 -->
+<mapper namespace="dao.PlayerMapper">
+	<!-- 등록 -->
+	<insert id="insertP" parameterType="hMap">
+	insert into nplayer(p_no, p_name, p_rDate, t_code)
+	values(p_no_seq.nextval, #{p_name}, to_date(#{p_rDate}, 'YYYY-MM-DD'), #{t_code})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="update" parameterType="hMap">
+	update nplayer
+	set
+	p_no = #{p_no}, p_name = #{p_name}, p_rDate = to_date(#{p_rDate}, 'YYYY-MM-DD'), t_code = #{t_code}
+	where p_no = #{p_no}
+	</update>
+	
+	<!-- 수정(1달 전 용) -->
+	<update id="updateP" parameterType="hMap">
+	update nplayer
+	set
+	p_no = #{P_NO}, p_name = #{P_NAME}, p_rDate = to_date(#{P_RDATE}, 'YYYY-MM-DD'), t_code = #{T_CODE}
+	where p_no = #{P_NO}
+	</update>
+	
+	<!-- no검색 -->
+	<select id="findByNo" resultType="hMap" parameterType="int">
+	select to_char(p_no, '99') as p_no, p_name, to_char(p_rDate,'YYYY-MM-DD') as p_rDate, to_char(t_code, '99') as t_code
+	from nplayer
+	where p_no = #{p_no}
+	</select>
+	
+	<!-- 한달 전 날짜 출력 -->
+	<select id="aMonthBefore" resultType="hMap" parameterType="int">
+	select p_no, p_name, to_char(add_months(p_rDate, -1), 'YYYY-MM-DD') as p_rDate, t_code
+	from nplayer
+    where p_no = #{p_no}
+	</select>
+	
+	<!-- 여섯달 후 날짜 출력 -->
+	<select id="sixMonthAfter" resultType="hMap" parameterType="int">
+	select p_no, p_name, to_char(add_months(p_rDate, 6), 'YYYY-MM-DD') as p_rDate, t_code
+	from nplayer
+	where p_no = #{p_no}
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteP" parameterType="int">
+	delete
+	from nplayer
+	where p_no = #{p_no}
+	</delete>
+	
+	<!-- 팀이름 검색 -->
+	<select id="findPTName" resultType="hMap" parameterType="int">
+	select t.t_name, p.p_name
+	from team t, nplayer p
+	where t.t_code = p.t_code 
+	and p.p_no = #{p_no}
+	</select>
+	
+	<!-- 전체검색 -->
+	<select id="findAll" resultType="hMap">
+	select to_char(p_no, '99') as p_no, p_name, to_char(p_rDate, 'YYYY-MM-DD') as p_rdate, to_char(t_code,'99') as t_code 
+	from nplayer
+	</select>	
+	
+	<select id="compare" resultType="String">
+	select *  from nplayer where p_rdate <![CDATA[>]]> to_date(#{date}, 'YYYY-MM-DD')
+	</select>
+</mapper>

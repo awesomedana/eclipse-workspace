@@ -1,0 +1,80 @@
+package dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import basic.MybatisConfig;
+
+public class PlayerDao {
+	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
+	
+	public boolean insertP(HashMap<String, String> pMap) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultI = mapper.insertP(pMap);
+			if (resultI == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
+	
+	public boolean updateP(HashMap<String, String> pMap) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultU = mapper.updateP(pMap);
+			if (resultU == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
+	
+	public boolean deleteP(int p_no) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultD = mapper.deleteP(p_no);
+			if (resultD == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public HashMap<String, String> findByNo(int p_no){
+		HashMap<String, String> findMap = null;
+		
+		return findMap;
+	}
+	
+	public List<HashMap<String, String>> findAllList(){
+		List<HashMap<String, String>> mapList = null;
+		
+		return mapList;
+	}
+}

@@ -1,0 +1,23 @@
+package hash.service;
+
+import hash.dao.FoodDao;
+import hash.dto.Food;
+
+public class FoodService {
+	FoodDao dao = new FoodDao();
+
+	public int insert(Food food) {
+		int result = 0;
+		
+		if (food == null) {
+			
+		}
+		return result;		
+	}
+	
+	public int search(String fcode) {
+		int result = 0;
+		int resultS = dao.search(fcode);
+		return result;
+	}
+}

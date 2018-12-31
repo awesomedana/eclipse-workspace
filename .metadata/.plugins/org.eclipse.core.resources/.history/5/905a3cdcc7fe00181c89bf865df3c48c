@@ -1,0 +1,164 @@
+package dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import basic.MybatisConfig;
+
+public class PlayerDao {
+	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
+	
+	public boolean insertP(HashMap<String, String> pMap) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultI = mapper.insertP(pMap);
+			if (resultI == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} if (session != null) {
+			session.close();
+		}
+		return result;
+	}
+	
+	public boolean update(HashMap<String, Object> pMap) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultU = mapper.update(pMap);
+			if (resultU == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} if (session != null) {
+			session.close();
+		}
+		return result;
+	}
+	
+	public boolean updateP(HashMap<String, Object> pMap) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultU = mapper.updateP(pMap);
+			if (resultU == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} if (session != null) {
+			session.close();
+		}
+		return result;
+	}
+	
+	public boolean deleteP(int p_no) {
+		boolean result = false;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			int resultD = mapper.deleteP(p_no);
+			if (resultD == 1) {
+				result = true;
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} if (session != null) {
+			session.close();
+		}
+		return result;
+	}
+	
+	public HashMap<String, Object> aMonthBefore(int p_no){
+		HashMap<String, Object> beforeMap = null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			beforeMap = mapper.aMonthBefore(p_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return beforeMap;
+	}
+	
+	public HashMap<String, Object> sixMonthAfter(int p_no){
+		HashMap<String, Object> afterMap = null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			afterMap = mapper.sixMonthAfter(p_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return afterMap;
+	}
+	
+	public HashMap<String, Object> findByNo(int p_no){
+		HashMap<String, Object> findMap = null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			findMap = mapper.findByNo(p_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return findMap;
+	}
+	
+	public List<HashMap<String, Object>> findAllList(){
+		List<HashMap<String, Object>> mapList = null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			mapList = mapper.findAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return mapList;
+	}
+	
+	public HashMap<String, Object> findPTName(int p_no){
+		HashMap<String, Object> mapT = null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			mapT = mapper.findPTName(p_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return mapT;
+	}
+}

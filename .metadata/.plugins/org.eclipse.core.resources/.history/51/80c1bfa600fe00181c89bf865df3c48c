@@ -1,0 +1,7 @@
+package hash.service;
+
+import hash.dao.FoodDao;
+
+public class FoodService {
+	FoodDao dao = new FoodDao();
+}

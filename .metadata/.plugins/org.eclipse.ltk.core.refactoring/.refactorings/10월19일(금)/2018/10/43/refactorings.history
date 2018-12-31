@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;NumbersGame2.java&apos; to &apos;10월18일(목)/game&apos;&#x0D;&#x0A;- Original project: &apos;10월19일(금)&apos;&#x0D;&#x0A;- Destination element: &apos;10월18일(목)/game&apos;&#x0D;&#x0A;- Original element: &apos;NumbersGame2.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=10월18일\(목)/&lt;game" element1="/&lt;{NumbersGame2.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1540095170727" units="1" version="1.0"/>
+</session>

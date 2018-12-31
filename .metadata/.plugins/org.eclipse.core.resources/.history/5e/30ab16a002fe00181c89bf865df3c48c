@@ -1,0 +1,27 @@
+package hash.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import hash.main.MybatisConfig;
+
+
+public class FoodDao {
+	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
+	
+	public int search(String fcode) {
+		int resultS = 0;
+		SqlSession session = null;
+		
+		try {
+			session = factory.openSession();
+			FoodMapper mapper = session.getMapper(FoodMapper.class);
+			resultS = mapper.search(fcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultS;
+	}
+
+}

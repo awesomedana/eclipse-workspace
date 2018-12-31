@@ -1,0 +1,10 @@
+package hash.dao;
+
+import hash.dto.Food;
+
+public interface FoodMapper {
+	public int insert(Food food);
+	public int search(String fcode);
+	public int update(Food food);
+	public int delete(String fcode)
+}

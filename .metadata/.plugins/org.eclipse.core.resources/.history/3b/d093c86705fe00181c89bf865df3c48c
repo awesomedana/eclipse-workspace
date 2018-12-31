@@ -1,0 +1,31 @@
+package hash.dto;
+
+public class Food {
+	private String fcode;
+	private String fname;
+	
+	public Food() {}
+	public Food(String fcode, String fname) {
+		super();
+		this.fcode = fcode;
+		this.fname = fname;
+	}
+	
+	public String getFcode() {
+		return fcode;
+	}
+	public void setFcode(String fcode) {
+		this.fcode = fcode;
+	}
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	
+	@Override
+	public String toString() {
+		return "Food [fcode=" + fcode + ", fname=" + fname + "]";
+	}
+}

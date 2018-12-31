@@ -1,0 +1,12 @@
+package hash.service;
+
+import hash.dao.FoodDao;
+
+public class FoodService {
+	FoodDao dao = new FoodDao();
+
+	public void insert(Food food) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,24 @@
+package dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+public interface PlayerMapper {
+	public int insertP(HashMap<String, Object> map);
+	
+	public int update(HashMap<String, Object> map);
+	
+	public int updateP(HashMap<String, Object> map);
+	
+	public int deleteP(int p_no);
+	
+	public HashMap<String, Object> aMonthBefore(int p_no);
+	
+	public HashMap<String, Object> sixMonthAfter(int p_no);
+	
+	public HashMap<String, Object> findByNo(int p_no);
+	
+	public List<HashMap<String, Object>> findAll();
+	
+	public HashMap<String, Object> findPTName(int p_no);
+}

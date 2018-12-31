@@ -1,0 +1,10 @@
+package hash.dao;
+
+import java.util.HashMap;
+
+public interface FoodMapper {
+	public int insert(HashMap<String, String> map);
+	public HashMap<String, String> search(String fcode);
+	public int update(HashMap<String, String> map);
+	public int delete(String fcode);
+}
